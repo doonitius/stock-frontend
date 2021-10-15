@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Stock List</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lato&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    
+</head>
+<body>
+    <div class="topnav">
+        <a class="active" href="index.html">Stock</a>
+        <a href="record.html">Record</a>
+        <a href="#In">Stock In</a>
+        <a href="#Out">Stock Out</a>
+    </div>
+    <table id="list">
+        <tr>
+            <th class = "headCol">Item ID</th>
+            <th class = "headCol">Name</th>
+            <th class = "headCol">Category</th>
+            <th class = "headCol">Available</th>
+            <th class = "headCol"> </th>
+            <th class = "headCol"> </th>
+        </tr>
+    </table>
+    <button onclick="document.getElementById('id01').style.display='block'" style="width:auto;">Add Item</button>
+
+    <div id="id01" class="modal">
+        
+        <iframe name="hiddenFrame" width="0" height="0" style="display: none;"></iframe>
+        <form class="modal-content animate" action="http://localhost:3000/api/item/add"
+        onsubmit="setTimeout(function(){window.location.reload();},10);" target="hiddenFrame" method="post">
+    
+            <div class="container"> 
+                <label for="item_name"><b>Item Name</b></label>
+                <input type="text" placeholder="Enter Item Name" name="item_name" required>
+    
+                <label for="category"><b>Category</b></label>
+                <input type="text" placeholder="Enter Category" name="category">
+    
+                <button type="submit" onclick="document.getElementById('id01').style.display='none'">Add</button>
+            </div>
+    
+            <div class="container" style="background-color:#f1f1f1">
+                <button type="button" onclick="document.getElementById('id01').style.display='none'"
+                    class="cancelbtn">Cancel</button>
+                <!-- <span class="psw">Forgot <a href="#">password?</a></span> -->
+            </div>
+        </form>
+    </div>
+
+        <div id="id03" class="modal">
+            
+            <form class="modal-content animate" action=""
+                onsubmit="setTimeout(function(){window.location.reload();},10);" target="hiddenFrame" method="post">
+        
+                <div class="container">
+                    
+                    <label for="item_name"><b>Item Name</b></label>
+                    <input type="text" placeholder="Enter Item Name" name="item_name" required>
+        
+                    <label for="category"><b>Category</b></label>
+                    <input type="text" placeholder="Enter Category" name="category">
+        
+                    <button type="submit" onclick="document.getElementById('id03').style.display='none'">Edit</button>
+                </div>
+        
+                <div class="container" style="background-color:#f1f1f1">
+                    <button type="button" onclick="document.getElementById('id03').style.display='none'"
+                        class="cancelbtn">Cancel</button>
+                    <!-- <span class="psw">Forgot <a href="#">password?</a></span> -->
+                </div>
+            </form>
+        </div>
+
+    <div id="id02" class="modal">
+        <span onclick="document.getElementById('id02').style.display='none'" class="close2"
+            title="Close Modal">&times;</span>
+        <div class="modal-content2 animate">
+            <div class="container2">
+                <h1>Delete Item</h1>
+                <p>Are you sure you want to delete this item?</p>
+    
+                <div class="clearfix2">
+                    <button type="button" class="cancelbtn2" onclick="document.getElementById('id02').style.display='none'" >Cancel</button>
+                    <button type="button" class="deletebtn" onclick="deleteItem()">Delete</button>
+                </div>
+            </div>
+        </d>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script src ="script/index.js"></script>
+    
+    
+</body>
+</html>

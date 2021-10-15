@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Stock Record</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lato&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+</head>
+
+<body>
+    <div class="topnav">
+        <a href="index.html">Stock</a>
+        <a class="active" href="record.html">Record</a>
+        <a href="#contact">Stock In</a>
+        <a href="#about">Stock Out</a>
+    </div>
+    <!-- <a href="index.html"><nav>Stock List</nav></a> -->
+    <table id="list">
+        <tr>
+            <th class = "headCol">Record ID</th>
+            <th class = "headCol">Item ID</th>
+            <th class = "headCol">Item Name</th>
+            <th class = "headCol">Date</th>
+            <th class = "headCol">Amount</th>
+        </tr>
+    </table>
+    <button onclick="document.getElementById('id01').style.display='block'" style="width:auto;">Add Record</button>
+    
+    <div id="id01" class="modal">
+        
+        <iframe name="hiddenFrame" width="0" height="0" style="display: none;"></iframe>
+
+        <form class="modal-content animate" action="http://localhost:3000/api/record/add"
+        onsubmit="setTimeout(function(){window.location.reload();},10);" target="hiddenFrame" method="post">
+    
+            <div class="container">
+                <b>Item ID</b> <select name="item_id" id="item_id">
+                    <option value="" selected = "selected">Select Item</option>
+                </select>
+
+                <!-- <label for="item_id"><b>Item ID</b></label>
+                <input type="text" placeholder="Enter Item ID" name="item_id" required> -->
+    
+                <label for="record_date"><b>Date</b></label>
+                <input type="date" name="record_date">
+
+                <label for="amount"><b>Amount</b></label>
+                <input type="number" name="amount">
+
+    
+                <button type="submit" onclick="document.getElementById('id01').style.display='none'">Add</button>
+            </div>
+    
+            <div class="container" style="background-color:#f1f1f1">
+                <button type="button" onclick="document.getElementById('id01').style.display='none'"
+                    class="cancelbtn">Cancel</button>
+                <!-- <span class="psw">Forgot <a href="#">password?</a></span> -->
+            </div>
+        </form>
+    </div>
+    
+    <!-- <script>
+        // Get the modal
+        var modal = document.getElementById('id01');
+
+        // When the user clicks anywhere outside of the modal, close it
+        window.onclick = function (event) {
+            if (event.target == modal) {
+                modal.style.display = "none";
+            }
+        }
+    </script> -->
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script src="script/record.js"></script>
+</body>
+
+</html>
